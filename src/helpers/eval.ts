@@ -90,6 +90,7 @@ function generateEvaluator (samplerName: 'interval' | 'builtIn') {
     //  variables:  { x: 3 }
     //
     compileIfPossible(meta, property)
+    console.log(meta[property], variables);
 
     return getCompiledExpression(meta, property).eval(
       Object.assign({}, meta.scope || {}, variables)

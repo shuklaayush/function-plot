@@ -21,11 +21,12 @@ export default function derivative(chart: Chart) {
       return []
     }
     const x0 = typeof d.derivative.x0 === 'number' ? d.derivative.x0 : Infinity
+    const y0 = builtInEvaluator(d, 'fn', { x: x0 })
     derivativeDatum.index = d.index
     derivativeDatum.scope = {
-      m: builtInEvaluator(d.derivative, 'fn', { x: x0 }),
+      m: builtInEvaluator(d.derivative, 'fn', { x: x0, y: y0 }),
       x0: x0,
-      y0: builtInEvaluator(d, 'fn', { x: x0 })
+      y0: y0,
     }
     derivativeDatum.fn = 'm * (x - x0) + y0'
     return [derivativeDatum]
